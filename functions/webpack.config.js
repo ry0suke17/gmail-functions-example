@@ -3,9 +3,9 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    functions: './src/index.ts',
-    gmailtoken: './gmail/generatetoken/index.ts',
-    gmailwatch: './gmail/watch/index.ts',
+    functions: './src/app/functions/index.ts',
+    gmailtoken: './src/app/gmail/generatetoken/index.ts',
+    gmailwatch: './src/app/gmail/watch/index.ts',
   },
   mode: 'development',
   target: 'node',
