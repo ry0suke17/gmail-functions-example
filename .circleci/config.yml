@@ -32,14 +32,14 @@ jobs:
           name: Update npm
           command: 'sudo npm install -g npm@6.4.1'
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "functions/package.json" }}
       - run:
           name: Rebuild modules
           command: cd functions && npm rebuild
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "functions/package.json" }}
           paths:
-            - node_modules
+            - functions/node_modules
       - run:
           name: Build
           command: cd functions && npm run build
