@@ -1,0 +1,51 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/node:10.15.2-stretch-browsers
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@6.4.1'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Rebuild modules
+          command: npm rebuild
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Prettier
+          command: npm run prettier
+      - run:
+          name: Lint
+          command: npm run lint
+  build:
+    docker:
+      - image: circleci/node:10.15.2-stretch-browsers
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@6.4.1'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Rebuild modules
+          command: npm rebuild
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Build
+          command: npm run build
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+      - build
