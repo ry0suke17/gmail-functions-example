@@ -1,5 +1,7 @@
 # gmail-functions-example
 
+[![CircleCI](https://circleci.com/gh/yneee/gmail-functions-example.svg?style=svg&circle-token=8e4a23059fddd88c1709e46902cbdb1754579609)](https://circleci.com/gh/yneee/gmail-functions-example)
+
 gmail-functions-example is example that receive Gmail Push notification by Cloud Pub/Sub. The following document is referred to.
 
 - [Push Notifications](https://developers.google.com/gmail/api/guides/push)
