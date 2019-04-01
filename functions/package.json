@@ -1,0 +1,32 @@
+{
+  "name": "functions",
+  "scripts": {
+    "build": "webpack --progress",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "lint": "tslint --project ./ 'src/app/**/*.ts' 'src/test/**/*.ts'",
+    "prettier": "node_modules/prettier/bin-prettier.js --list-different 'src/app/**/*.ts' 'src/test/**/*.ts'",
+    "gmail-generate-token": "node dist/gmailtoken.bundle.js",
+    "gmail-watch": "node dist/gmailwatch.bundle.js"
+  },
+  "main": "dist/functions.bundle.js",
+  "devDependencies": {
+    "@google-cloud/pubsub": "^0.28.1",
+    "@types/node": "^11.11.7",
+    "firebase-admin": "^7.2.0",
+    "firebase-functions": "^2.2.1",
+    "googleapis": "^38.0.0",
+    "json-loader": "^0.5.7",
+    "prettier": "^1.16.4",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.14.0",
+    "tslint-loader": "^3.5.4",
+    "typescript": "^3.3.4000",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "private": true
+}
